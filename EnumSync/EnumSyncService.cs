@@ -3,15 +3,30 @@ using System.Reflection;
 
 namespace Spark.CodeBoost.EnumToolkit.EnumSync;
 
+/// <summary>
+/// Provides functionality to synchronize enums with a database table for multilingual use.
+/// Writes or updates enum values into a table such as EnumTypeLookup for use in UI or other systems.
+/// </summary>
 public class EnumSyncService
 {
     private readonly IReadOnlyList<EnumMetadata> _enumMetadataList;
 
+    /// <summary>
+    /// Initializes a new instance of <see cref="EnumSyncService"/>.
+    /// </summary>
+    /// <param name="enumMetadataList">The list of enum metadata used to discover enums.</param>
     public EnumSyncService(IReadOnlyList<EnumMetadata> enumMetadataList)
     {
         _enumMetadataList = enumMetadataList;
     }
 
+    /// <summary>
+    /// Synchronizes all discovered enums with the database.
+    /// </summary>
+    /// <param name="dbContext">The EF Core DbContext used for database access.</param>
+    /// <param name="languages">Array of language codes (e.g. "en", "tr") to sync translations for.</param>
+    /// <param name="schema">Schema name where EnumTypeLookup table is located. Default is "core".</param>
+    /// <param name="deleteOrphans">If true, removes entries that no longer exist in the enum. Default is true.</param>
     public async Task SyncAllAsync(
         DbContext dbContext,
         string[] languages,
@@ -42,6 +57,14 @@ public class EnumSyncService
         }
     }
 
+    /// <summary>
+    /// Synchronizes a single enum type with the database for all specified languages.
+    /// </summary>
+    /// <typeparam name="TEnum">The enum type to synchronize.</typeparam>
+    /// <param name="dbContext">The EF Core DbContext used for database access.</param>
+    /// <param name="languages">Array of language codes to include in sync.</param>
+    /// <param name="schema">Database schema name.</param>
+    /// <param name="deleteOrphans">Whether to delete values from the database that are no longer in the enum.</param>
     private async Task SyncEnumAsync<TEnum>(
         DbContext dbContext,
         string[] languages,
