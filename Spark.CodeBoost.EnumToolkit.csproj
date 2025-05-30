@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>1.0.19</Version>
+		<PackageOutputPath>D:\MyProjects\SVA\SVA.ERP\Spark.Codeboost</PackageOutputPath>
+		<Description>Enum lar için extension ve servis ekler.</Description>
+
+		<!-- Geliştirici ve Şirket Bilgisi -->
+		<Authors>Mehmet Güzel</Authors>
+		<!-- Geliştirici adı -->
+		<Company></Company>
+		<!-- Şirket adı -->
+		<PackageIcon>assets/logo.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.3.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Spark.CodeBoost.Common\Spark.CodeBoost.Common.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="assets\logo.png">
+	    <PackagePath>assets/logo.png</PackagePath>
+	    <Pack>True</Pack>
+	  </None>
+	</ItemGroup>
+
+</Project>
